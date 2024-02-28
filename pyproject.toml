@@ -110,6 +110,7 @@ websocket_client = "*"
 markdown-it-py = "*"
 timezonefinder = "*"
 setproctitle = "*"
+ipykernel = "^6.29.2"
 
 [tool.poetry.group.dev.dependencies]
 av = "*"
