@@ -1,5 +1,5 @@
 # Convert to a python class
-from typing import List
+from typing import List, Union
 
 # Convert to a python class
 
@@ -234,6 +234,8 @@ class CarState:
         speedCluster: float
 
     class Event:
+        # examples of event names:
+        # doorOpen, seatbeltNotLatched, wrongGear, wrongCarMode, parkBrake, pcmDisable
         name: str
         enable: bool
         noEntry: bool
@@ -1348,3 +1350,36 @@ class WideRoadEncodeIdx:
     timestampEof: int
     flags: int
     len: int
+
+
+class Clocks:
+    bootTimeNanosDEPRECATED: int
+    monotonicNanosDEPRECATED: int
+    monotonicRawNanosDEPRECATD: int
+    wallTimeNanos: int
+    modemUptimeMillisDEPRECATED: int
+
+
+class _SendcanItem:
+
+    class SendCan:
+        address: int
+        busTime: int
+        dat: Union[
+            bytes, str
+        ]  # Adjust based on the actual use case (bytes or a representation of it)
+        src: int
+
+    sendcan: List[SendCan]
+    logMonoTime: int
+    valid: bool
+
+
+class Sendcan(List[_SendcanItem]):
+    pass
+
+
+class ErrorLogMessage(str):
+    """Is a json string containing msg, ctx ++."""
+
+    pass
